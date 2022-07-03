@@ -1,9 +1,15 @@
 const { defineConfig } = require('@vue/cli-service');
 const UnoCSS = require('unocss/webpack').default;
 const { presetUno, presetAttributify } = require('unocss');
+const path = require('path');
 module.exports = defineConfig({
   transpileDependencies: true,
   configureWebpack: {
+    resolve: {
+      alias: {
+        '@': `${path.resolve(__dirname, 'src')}`,
+      },
+    },
     plugins: [
       UnoCSS({
         presets: [presetUno(), presetAttributify()],
